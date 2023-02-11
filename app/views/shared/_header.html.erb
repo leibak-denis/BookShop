@@ -1,0 +1,31 @@
+<header class=" h-20 bg-white  shadow-md ">
+
+  <div class="container mx-auto w-3/5">
+
+    <div class="text-2xl uppercase font-bold justify-between my-auto flex items-center pt-5">
+
+      <div class="flex items-center navbar navbar-expand-lg">
+        <%= link_to "Products",  products_path, class: "ml-2"%>
+        <%= link_to "Categories", categories_path, class: "ml-10"%>
+
+      </div>
+
+      <div class="flex items-center flex-row my-auto">
+      <div>
+        <%= link_to "Cart", cart_path, class:"mr-10"%>
+      </div>
+        <% if user_signed_in? %>
+
+          <!-- <div> Welcome, <%= current_user.first_name %> </div> -->
+          <%= button_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <div>
+            <%= link_to "Sign up", new_user_registration_path, class:"mr-10"%>
+            <%= link_to "Sign in", new_user_session_path%>
+          </div>
+        <% end %>
+        </div>
+    </div>
+
+  </div>
+</header>

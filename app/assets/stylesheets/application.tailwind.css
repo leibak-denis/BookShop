@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .btn-buy {
+    @apply mt-2  text-white bg-blue-700
+    hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+    font-medium rounded-lg text-sm px-5 py-2.5 text-center
+    inline-flex items-center mr-2 dark:bg-blue-600
+    dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  }
+
+  .product-item {
+    @apply mt-6 h-40 bg-white mx-auto p-3 rounded-lg shadow-md flex flex-row justify-between;
   }
 }
-
-*/

@@ -1,0 +1,8 @@
+<div>
+  <%= form_with model: @cart_product, data: { controller: 'local-cart', action: 'local-cart#addProduct:prevent' } do |f| %>
+    <%= f.hidden_field :id, value: product.id, data: {"local-cart-target": :id} %>
+      <%= f.number_field :amount, value: 0, min: 1, data: {"local-cart-target": :amount} %>
+      <%= f.submit "Add to cart"%>
+  <% end %>
+
+</div>

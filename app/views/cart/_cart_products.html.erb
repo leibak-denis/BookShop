@@ -1,0 +1,31 @@
+<% @cart.cart_products.each do |cart_product| %>
+  <% product = cart_product.product %>
+  <div class="product-item" >
+    <div>
+      <%= render "products/product", product: product%>
+    </div>
+    <div class="mt-2">
+      <div class="text-white font-bold">
+        <div>
+          <%= form_with(url: cart_add_path) do |f| %>
+            <%= f.hidden_field :id, value: product.id, class:"w-0" %>
+            <%= f.number_field :amount, value: cart_product.amount, min: 1, class:"h-12 w-2/5 rounded-lg text-black"  %>
+            <%= f.submit "OK", class:" w-2/5 rounded-lg bg-green-400 h-12 "%>
+          <% end %>
+        </div>
+        <div class="flex justify-end mt-1  mr-16">
+          <%= form_with(url: cart_remove_path) do |f| %>
+            <%= f.hidden_field :id, value: cart_product.id %>
+            <%= f.submit "X", class:"h-11  px-6 bg-red-500 rounded-lg"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-2">
+        <span class="font-bold "> Total: </span>
+        <%= cart_product.total %>
+      </div>
+    </div>
+  </div>
+
+
+<% end %>
