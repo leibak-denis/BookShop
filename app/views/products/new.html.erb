@@ -1,0 +1,36 @@
+<h1>New product</h1>
+
+<div>
+</br>
+<%= form_with model: @product do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "Product Name", required: true %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.text_field :price, placeholder: "Product Price", required: true %>
+  </div>
+
+   <div>
+    <%= f.label :description %>
+    <%= f.text_field :description, placeholder: "Product Description", required: true %>
+  </div>
+
+  <div>
+    <%= f.label :position %>
+    <%= f.text_field :position, placeholder: "Product position", required: true %>
+  </div>
+
+  <div>
+    <%= f.label :category_id %>
+    <%= f.text_field :category_id, placeholder: "Product position", required: true %>
+  </div>
+
+  <%= f.submit "Add product" %>
+<% end %>
+<div>
+  <%= link_to "All prodcts", products_path %>
+</div>
+</div>

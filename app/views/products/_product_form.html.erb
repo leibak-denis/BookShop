@@ -1,0 +1,27 @@
+<div >
+  <%= form_with(url: cart_add_path) do |f| %>
+    <%= f.hidden_field :id, value: product.id %>
+    <div>
+      <%= f.hidden_field :amount, value: 1, min: 1, class:"w-3/5 rounded-lg" %>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <% if @cart.cart_products.exists?(:product_id => product.id) %>
+          <div class="btn-buy">
+            Already in cart
+          </div>
+        <% else %>
+          <%= f.submit "Add to cart", class:"btn-buy"%>
+        <% end %>
+      <% else %>
+        <% if @cart.key?(product.id.to_s) %>
+          <div class="btn-buy">
+            Already in cart
+          </div>
+        <% else %>
+          <%= f.submit "Add to cart", class:"btn-buy"%>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
