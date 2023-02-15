@@ -13,13 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
-    cart = Cart.new
-    cart.user_id = current_user.id
-    cart.save
+    # cart = Cart.new
+    # cart.user_id = current_user.id
+    # cart.save
+    current_user.create_cart
     if session[:cart].present?
       session[:cart].each do |key, value|
-        prod = CartProduct.create(cart_id: cart.id, product_id: key.to_i, amount: value)
-        prod.save
+        CartProduct.create(cart_id: current_user.cart.id, product_id: key.to_i, amount: value)
+        # prod.save
       end
     end
     session[:cart] = {}
